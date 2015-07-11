@@ -15,8 +15,10 @@
       }
       table {
         margin: 0px auto;
-        text-align: center;
         font-size: 2em;
+      }
+      table .calendar {
+        text-align: center;
       }
       table td {
         padding: 20px;
@@ -43,10 +45,25 @@
         var sched = 'cpowwopccpowcpowcpowcpowcpowcpow';
         
         var now = moment();
-        var temp = now.clone();
-        
+        switch (sched.charAt(now.date()-1)) {
+          case 'c':
+            $('.state').html('Yes.');
+            break;
+          case 'p':
+            $('.state').html('Post.');
+            break;
+          case 'o':
+            $('.state').html('No.');
+            break;
+          case 'w':
+            $('.state').html('Wedge.');
+            break;
+          default:
+            $('.state').html('Maybe?');
+        }
+
         $('.calendar .month').html(now.format('MMMM YYYY'));
-        
+        var temp = now.clone();
         var startWeek = temp.startOf('month').week();
         var endWeek   = temp.endOf('month').week();
         for (var w = startWeek; w <= endWeek; w++) {
@@ -82,7 +99,7 @@
   </head>
   
   <body>
-    <h1 class="state"> Yes. No. Post. Call. Wedge. Off. Maybe? </h1>
+    <h1 class="state"> Maybe? </h1>
     <table class="calendar">
       <thead>
         <tr><th colspan="7" class="month">Loading...</th></tr>
