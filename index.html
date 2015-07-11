@@ -61,6 +61,7 @@
         var temp = calMonth.clone();
         var startWeek = temp.startOf('month').week();
         var endWeek   = temp.endOf('month').week();
+        alert('start: '+startWeek+' end: '+endWeek);
         for (var w = startWeek; w <= endWeek; w++) {
           var weekHTML = [];
           for (var d = 0; d < 7; d++) {
