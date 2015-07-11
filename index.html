@@ -73,7 +73,7 @@
       }
     
       $(document).ready(function() {
-        now = moment();
+        now = moment(); now.add(1,'month');
         calMonth = now.clone();
         $('.state').html(stateStr[getCode(now)]);
         loadCalendar();
