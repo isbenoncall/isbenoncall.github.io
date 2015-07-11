@@ -26,6 +26,10 @@
       .inactive {
         color: #bbb;
       }
+      .today {
+        padding: 15px;
+        border: 5px solid #f00;
+      }
       .legend {
         border: 5px solid #000;
         width: 1em;
@@ -44,55 +48,31 @@
       $(document).ready(function() {
         var sched = 'cpowwopccpowcpowcpowcpowcpowcpow';
         
+        var stateStr = {'c':'Yes.', 'p':'Post.', 'o':'No.', 'w':'Wedge.'};
+        var classStr = {'c':'call', 'p':'post',  'o':'off', 'w':'wedge' };
+        
         var now = moment();
-        switch (sched.charAt(now.date()-1)) {
-          case 'c':
-            $('.state').html('Yes.');
-            break;
-          case 'p':
-            $('.state').html('Post.');
-            break;
-          case 'o':
-            $('.state').html('No.');
-            break;
-          case 'w':
-            $('.state').html('Wedge.');
-            break;
-          default:
-            $('.state').html('Maybe?');
-        }
-
-        $('.calendar .month').html(now.format('MMMM YYYY'));
         var temp = now.clone();
+        $('.state').html(stateStr[sched.charAt(now.date()-1)]);
+        $('.calendar .month').html(now.format('MMMM YYYY'));
         var startWeek = temp.startOf('month').week();
         var endWeek   = temp.endOf('month').week();
         for (var w = startWeek; w <= endWeek; w++) {
-          var weekHTML = '';
+          var weekHTML = [];
           for (var d = 0; d < 7; d++) {
             temp.week(w).day(d);
+            var dayClass = [];
             if (now.isSame(temp,'month')) {
-              switch (sched.charAt(temp.date()-1)) {
-                case 'c':
-                  weekHTML += '<td class="call">';
-                  break;
-                case 'p':
-                  weekHTML += '<td class="post">';
-                  break;
-                case 'o':
-                  weekHTML += '<td class="off">';
-                  break;
-                case 'w':
-                  weekHTML += '<td class="wedge">';
-                  break;
-                default:
-                  weekHTML += '<td>';
+              dayClass.push(classStr[sched.charAt(temp.date()-1)]);
+              if (now.isSame(temp,'day')) {
+                dayClass.push('today');
               }
             } else {
-              weekHTML += '<td class="inactive">';
+              dayClass.push('inactive');
             }
-            weekHTML += temp.format('D')+'</td>';
+            weekHTML.push('<td class="'+dayClass.join(' ')+'">'+temp.format('D')+'</td>');
           }
-          $('.calendar tbody').append('<tr>'+weekHTML+'</tr>');
+          $('.calendar tbody').append('<tr>'+weekHTML.join('')+'</tr>');
         }
       });
     </script>
