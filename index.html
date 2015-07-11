@@ -26,7 +26,7 @@
         var stateStr = {'c':'<i class="fa fa-user-md"></i> Yes.', 'p':'<i class="fa fa-bed"></i> Post.', 'o':'<i class="fa fa-home"></i> No.', 'w':'<i class="fa fa-briefcase"></i> Wedge.'};
         var classStr = {'c':'call', 'p':'post', 'o':'off', 'w':'wedge' };
         
-        var now = moment(); now.add(1,'day');
+        var now = moment(); now.add(2,'day');
         var temp = now.clone();
         $('.state').html(stateStr[sched.charAt(now.date()-1)]);
         $('.calendar .month').html(now.format('MMMM YYYY'));
