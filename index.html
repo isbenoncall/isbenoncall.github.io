@@ -44,7 +44,7 @@
         background-color: #ff0;
       }
       .wedge {
-        background-color: #f0f;
+        background-color: #0fc;
       }
     </style>
     <script type="text/javascript">
@@ -54,7 +54,7 @@
         var stateStr = {'c':'Yes.', 'p':'Post.', 'o':'No.', 'w':'Wedge.'};
         var classStr = {'c':'call', 'p':'post',  'o':'off', 'w':'wedge' };
         
-        var now = moment(); now.add(1,'day');
+        var now = moment();
         var temp = now.clone();
         $('.state').html(stateStr[sched.charAt(now.date()-1)]);
         $('.calendar .month').html(now.format('MMMM YYYY'));
