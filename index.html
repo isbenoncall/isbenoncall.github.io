@@ -37,7 +37,7 @@
       };
       
       var stateStr = {'c':'<i class="fa fa-user-md"></i> Yes.', 'p':'<i class="fa fa-bed"></i> Post.', 'o':'<i class="fa fa-home"></i> No.', 'w':'<i class="fa fa-briefcase"></i> Wedge.', 'e':'Maybe?'};
-      var classStr = {'c':'call', 'p':'post', 'o':'off', 'w':'wedge', 'e':'' };
+      var classStr = {'c':'call', 'p':'post', 'o':'off', 'w':'wedge', 'e':'empty' };
       
       function getCode(day) {
         if ((day.format('MMMM YYYY') in sched) && day.date() <= sched[day.format('MMMM YYYY')].length) {
