@@ -24,17 +24,19 @@
       .call  { background-color: #0ff; }
       .post  { background-color: #ff0; }
       .wedge { background-color: #0fc; }
+      .empty { background-color:green; }
       @media print {
         .state { display: none; }
         .today { padding: 20px; border: 0px; }
       }
-      .empty {background-color:green;}
     </style>
     <script type="text/javascript">
       var now;
       var calMonth;
       var sched = {
-        'July 2015': 'powcpowcpowcpowcpowcpowcpowcpo'
+        'May 2015':  'ppcpwwwwoocpwcpoowwcpwcpwcpwcpc',
+        'June 2015': 'wwcpwcpwcpwcpcpwwwwoocpwcpoocp',
+        'July 2015': 'powcpowcpowcpowcpowcpowcpowcpow'
       };
       
       var stateStr = {'c':'<i class="fa fa-hospital-o"></i> Yes.', 'p':'<i class="fa fa-bed"></i> Post.', 'o':'<i class="fa fa-home"></i> No.', 'w':'<i class="fa fa-medkit"></i> Wedge.', 'e':'<i class="fa fa-question-circle"></i> Maybe?'};
@@ -73,17 +75,17 @@
       }
     
       $(document).ready(function() {
-        now = moment(); now.endOf('month');
-        calMonth = now.clone();
+        now = moment();
+        calMonth = now.clone(); calMonth.startOf('month');
         $('.state').html(stateStr[getCode(now)]);
         loadCalendar();
         
         $('.prevMonth').click(function() {
-          calMonth.subtract(1,'month');
+          calMonth.subtract(1,'months');
           loadCalendar();
         });
         $('.nextMonth').click(function() {
-          calMonth.add(1,'month');
+          calMonth.add(1,'months');
           loadCalendar();
         });
       });
