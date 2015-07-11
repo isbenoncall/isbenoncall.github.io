@@ -20,14 +20,17 @@
     </style>
     <script type="text/javascript">
       $(document).ready(function() {
-        $('.month').html(moment().format('MMMM'));
-        var startWeek = moment().startOf('month').week();
-        var endWeek   = moment().endOf('month').week();
+        var now = moment();
+        var temp = now.clone();
+        
+        $('.month').html(now.format('MMMM'));
+        
+        var startWeek = temp.startOf('month').week();
+        var endWeek   = temp.endOf('month').week();
         for (var w = startWeek; w <= endWeek; w++) {
           var weekHTML = '';
           for (var d = 0; d < 7; d++) {
-            if 
-            weekHTML += '<td>'+moment(String(w)+' '+String(d+1),'w e').format('D')+'</td>';
+            weekHTML += '<td>'+temp.week(w).day(d).format('D')+'</td>';
           }
           $('.calendar tbody').append('<tr>'+weekHTML+'</tr>');
         }
