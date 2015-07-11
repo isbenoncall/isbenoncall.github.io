@@ -30,7 +30,8 @@
       .wedge.inactive { background-color: #bfe; }
       .empty { background-color: #eee; }
       @media print {
-        .state, .prevMonth, .nextMonth { display: none; }
+        .state { display: none; }
+        .prevMonth, .nextMonth { visibility: hidden; }
         .today { padding: 20px; border: 0px; }
       }
     </style>
