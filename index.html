@@ -20,8 +20,16 @@
     </style>
     <script type="text/javascript">
       $(document).ready(function() {
-        var now = moment();
-        $('.month').html(now.format('MMMM'));
+        $('.month').html(moment().format('MMMM'));
+        var startWeek = moment().startOf('month').week();
+        var endWeek   = moment().endOf('month').week();
+        for (var w = startWeek; w <= endWeek; w++) {
+          $('.calendar tbody').append('<tr>');
+          for (var d = 0; d < 7; d++) {
+            $('.calendar tbody').append('<th>'+moment().week(w).day(d).format('D')+'</th>');
+          }
+          $('.calendar tobdy').append('</tr>');
+        }
       });
     </script>
   </head>
