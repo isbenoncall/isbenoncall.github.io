@@ -41,10 +41,10 @@
       var classStr = {'c':'call', 'p':'post', 'o':'off', 'w':'wedge', 'e':'empty' };
       
       function getCode(day) {
-        if ((day.format('MMMM YYYY') in sched) && day.date() <= sched[day.format('MMMM YYYY')].length) {
+        if ( (day.format('MMMM YYYY') in sched) && day.date() <= sched[day.format('MMMM YYYY')].length ) {
           return sched[day.format('MMMM YYYY')].charAt(day.date()-1);
         } else {
-          return 'e'
+          return 'e';
         }
       }
       
@@ -59,14 +59,12 @@
           var weekHTML = [];
           for (var d = 0; d < 7; d++) {
             temp.week(w).day(d);
-            var dayClass = [];
-            if (temp.isSame(calMonth,'month')) {
-              dayClass.push(classStr[getCode(temp)]);
-              if (temp.isSame(now,'day')) {
-                dayClass.push('today');
-              }
-            } else {
+            var dayClass = [ classStr[getCode(temp)] ];
+            if ( !temp.isSame(calMonth,'month') ) {
               dayClass.push('inactive');
+            }
+            if ( temp.isSame(now,'day') ) {
+              dayClass.push('today');
             }
             weekHTML.push('<td class="'+dayClass.join(' ')+'">'+temp.format('D')+'</td>');
           }
