@@ -15,15 +15,24 @@
       }
       table {
         margin: 0px auto;
+        text-align: center;
         font-size: 2em;
+      }
+      table td {
+        padding: 20px;
+      }
+      .inactive {
+        color: #bbb;
       }
     </style>
     <script type="text/javascript">
       $(document).ready(function() {
+        var sched = 'cpowcpowcpowcpowcpowcpowcpowcpow';
+        
         var now = moment();
         var temp = now.clone();
         
-        $('.month').html(now.format('MMMM'));
+        $('.month').html(now.format('MMMM YYYY'));
         
         var startWeek = temp.startOf('month').week();
         var endWeek   = temp.endOf('month').week();
@@ -32,7 +41,22 @@
           for (var d = 0; d < 7; d++) {
             temp.week(w).day(d);
             if (now.isSame(temp,'month')) {
-              weekHTML += '<td>';
+              switch (sched.charAt(temp.date()-1)) {
+                case 'c':
+                  weekHTML += '<td class="call">';
+                  break;
+                case 'p':
+                  weekHTML += '<td class="post">';
+                  break;
+                case 'o':
+                  weekHTML += '<td class="off">';
+                  break;
+                case 'w':
+                  weekHTML += '<td class="wedge">';
+                  break;
+                default:
+                  weekHTML += '<td>';
+              }
             } else {
               weekHTML += '<td class="inactive">';
             }
