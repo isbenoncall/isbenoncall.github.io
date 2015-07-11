@@ -32,7 +32,9 @@
     <script type="text/javascript">
       var now;
       var calMonth;
-      var sched = 'powcpowcpowcpowcpowcpowcpowcpow';
+      var sched = {
+        'July 2015': 'powcpowcpowcpowcpowcpowcpowcpow'
+      };
       
       var stateStr = {'c':'<i class="fa fa-user-md"></i> Yes.', 'p':'<i class="fa fa-bed"></i> Post.', 'o':'<i class="fa fa-home"></i> No.', 'w':'<i class="fa fa-briefcase"></i> Wedge.'};
       var classStr = {'c':'call', 'p':'post', 'o':'off', 'w':'wedge' };
@@ -50,7 +52,7 @@
             temp.week(w).day(d);
             var dayClass = [];
             if (temp.isSame(now,'month')) {
-              dayClass.push(classStr[sched.charAt(temp.date()-1)]);
+              dayClass.push(classStr[sched[temp.format('MMMM YYYY')].charAt(temp.date()-1)]);
               if (temp.isSame(now,'day')) {
                 dayClass.push('today');
               }
@@ -66,7 +68,7 @@
       $(document).ready(function() {
         now = moment();
         calMonth = now.clone();
-        $('.state').html(stateStr[sched.charAt(now.date()-1)]);
+        $('.state').html(stateStr[sched[now.format('MMMM YYYY')].charAt(now.date()-1)]);
         loadCalendar();
       });
     </script>
