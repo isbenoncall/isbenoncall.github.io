@@ -19,8 +19,10 @@
       }
     </style>
     <script type="text/javascript">
-      var now = moment();
-      $('.month').html(now.format('MMMM'));
+      $(document).ready(function() {
+        var now = moment();
+        $('.month').html(now.format('MMMM'));
+      });
     </script>
   </head>
   
