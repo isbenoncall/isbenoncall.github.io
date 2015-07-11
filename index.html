@@ -15,7 +15,7 @@
       body { font-family: 'Cousine'; }
       h1 { text-align: center; font-size: 10em; margin: 40px; }
       table { margin: 0px auto; font-size: 2em; }
-      table td { padding: 20px; }
+      table td { padding: 20px; border 0px; }
       .calendar { text-align: center; }
       .month { padding: 10px; }
       .inactive { color: #bbb; }
@@ -24,6 +24,10 @@
       .call  { background-color: #0ff; }
       .post  { background-color: #ff0; }
       .wedge { background-color: #0fc; }
+      @media print {
+        .state { display: none; }
+        .today { padding: 20px; border: 0px; }
+      }
     </style>
     <script type="text/javascript">
       $(document).ready(function() {
