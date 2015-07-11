@@ -26,9 +26,9 @@
         for (var w = startWeek; w <= endWeek; w++) {
           $('.calendar tbody').append('<tr>');
           for (var d = 0; d < 7; d++) {
-            $('.calendar tbody').append('<th>'+moment().week(w).day(d).format('D')+'</th>');
+            $('.calendar tbody').append('<td>'+moment().week(w).day(d).format('D')+'</td>');
           }
-          $('.calendar tobdy').append('</tr>');
+          $('.calendar tbody').append('</tr>');
         }
       });
     </script>
