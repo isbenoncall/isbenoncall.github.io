@@ -18,14 +18,14 @@
         text-align: center;
         font-size: 2em;
       }
-      table tfoot {
-        text-align: left;
-      }
       table td {
         padding: 20px;
       }
       .inactive {
         color: #bbb;
+      }
+      .legend {
+        border: 5px solid #000;
       }
       .call {
         background-color: #0ff;
@@ -44,7 +44,7 @@
         var now = moment();
         var temp = now.clone();
         
-        $('.month').html(now.format('MMMM YYYY'));
+        $('.calendar .month').html(now.format('MMMM YYYY'));
         
         var startWeek = temp.startOf('month').week();
         var endWeek   = temp.endOf('month').week();
@@ -95,13 +95,13 @@
           <th>Sa</th>
         </tr>
       </thead>
-      <tfoot>
-        <tr><td class="call  legend"></td><td colspan="6"> Call  </td></tr>
-        <tr><td class="post  legend"></td><td colspan="6"> Post  </td></tr>
-        <tr><td class="wedge legend"></td><td colspan="6"> Wedge </td></tr>
-        <tr><td class="off   legend"></td><td colspan="6"> Off   </td></tr>
-      </tfoot>
       <tbody></tbody>
+    </table>
+    <table>
+      <tr><td class="call  legend"></td><td> Call  </td></tr>
+      <tr><td class="post  legend"></td><td> Post  </td></tr>
+      <tr><td class="wedge legend"></td><td> Wedge </td></tr>
+      <tr><td class="off   legend"></td><td> Off   </td></tr>
     </table>
   </body>
 </html>
