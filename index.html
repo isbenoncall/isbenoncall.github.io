@@ -59,14 +59,9 @@
         
         $('.calendar tbody').html('');
         var temp = calMonth.clone();
-        var startWeek = temp.startOf('month').week();
-        var endWeek   = temp.endOf('month').week();
-        if (endWeek == 1) {
-          endWeek = temp.endOf('month').subtract(1,'weeks').week() + 1;
-        }
-        alert('start: '+startWeek+' end: '+endWeek);
+        var numWeek = (temp.endOf('month').subtract(1,'weeks').week()+1) - temp.startOf('month').week() + 1;
         temp.startOf('month').day(0);
-        for (var w = startWeek; w <= endWeek; w++) {
+        for (var w = 0; w < numWeek; w++) {
           var weekHTML = [];
           for (var d = 0; d < 7; d++) {
             var dayClass = [ classStr[getCode(temp)] ];
