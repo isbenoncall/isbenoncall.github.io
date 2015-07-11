@@ -24,11 +24,11 @@
         var startWeek = moment().startOf('month').week();
         var endWeek   = moment().endOf('month').week();
         for (var w = startWeek; w <= endWeek; w++) {
-          $('.calendar tbody').append('<tr>');
+          var weekHTML = '';
           for (var d = 0; d < 7; d++) {
-            $('.calendar tbody').append('<td>'+moment().week(w).day(d).format('D')+'</td>');
+            weekHTML += '<td>'+moment().week(w).day(d).format('D')+'</td>';
           }
-          $('.calendar tbody').append('</tr>');
+          $('.calendar tbody').append('<tr>'+weekHTML+'</tr>');
         }
       });
     </script>
