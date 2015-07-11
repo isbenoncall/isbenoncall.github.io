@@ -1,6 +1,7 @@
 <html>
   <head>
     <link href='http://fonts.googleapis.com/css?family=Cousine' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/2.9.0/moment.min.js"></script>
     
@@ -22,8 +23,8 @@
       $(document).ready(function() {
         var sched = 'cpowwopccpowcpowcpowcpowcpowcpow';
         
-        var stateStr = {'c':'Yes.', 'p':'Post.', 'o':'No.', 'w':'Wedge.'};
-        var classStr = {'c':'call', 'p':'post',  'o':'off', 'w':'wedge' };
+        var stateStr = {'c':'<i class="fa fa-user-md"></i> Yes.', 'p':'<i class="fa fa-bed"></i> Post.', 'o':'<i class="fa fa-home"></i> No.', 'w':'<i class="fa fa-briefcase"></i> Wedge.'};
+        var classStr = {'c':'call', 'p':'post', 'o':'off', 'w':'wedge' };
         
         var now = moment();
         var temp = now.clone();
