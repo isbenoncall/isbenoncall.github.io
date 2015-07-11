@@ -36,8 +36,16 @@
         'July 2015': 'powcpowcpowcpowcpowcpowcpowcpow'
       };
       
-      var stateStr = {'c':'<i class="fa fa-user-md"></i> Yes.', 'p':'<i class="fa fa-bed"></i> Post.', 'o':'<i class="fa fa-home"></i> No.', 'w':'<i class="fa fa-briefcase"></i> Wedge.'};
-      var classStr = {'c':'call', 'p':'post', 'o':'off', 'w':'wedge' };
+      var stateStr = {'c':'<i class="fa fa-user-md"></i> Yes.', 'p':'<i class="fa fa-bed"></i> Post.', 'o':'<i class="fa fa-home"></i> No.', 'w':'<i class="fa fa-briefcase"></i> Wedge.', 'e':'Maybe?'};
+      var classStr = {'c':'call', 'p':'post', 'o':'off', 'w':'wedge', 'e':'' };
+      
+      function getCode(day) {
+        if ((day.format('MMMM YYYY') in sched) && day.date() <= sched[day.format('MMMM YYYY')].length) {
+          return sched[day.format('MMMM YYYY')].charAt(day.date()-1);
+        } else {
+          return 'e'
+        }
+      }
       
       function loadCalendar() {
         $('.calendar .month').html(calMonth.format('MMMM YYYY'));
@@ -52,7 +60,7 @@
             temp.week(w).day(d);
             var dayClass = [];
             if (temp.isSame(calMonth,'month')) {
-              dayClass.push(classStr[sched[temp.format('MMMM YYYY')].charAt(temp.date()-1)]);
+              dayClass.push(classStr[getCode(temp)]);
               if (temp.isSame(now,'day')) {
                 dayClass.push('today');
               }
@@ -68,14 +76,14 @@
       $(document).ready(function() {
         now = moment();
         calMonth = now.clone();
-        $('.state').html(stateStr[sched[now.format('MMMM YYYY')].charAt(now.date()-1)]);
+        $('.state').html(stateStr[getCode(now)]);
         loadCalendar();
         
         $('.prevMonth').click(function() {
           calMonth.subtract(1,'month');
           loadCalendar();
         });
-        $('.prevMonth').click(function() {
+        $('.nextMonth').click(function() {
           calMonth.add(1,'month');
           loadCalendar();
         });
