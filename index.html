@@ -70,6 +70,15 @@
         calMonth = now.clone();
         $('.state').html(stateStr[sched[now.format('MMMM YYYY')].charAt(now.date()-1)]);
         loadCalendar();
+        
+        $('.prevMonth').click(function() {
+          calMonth.subtract(1,'month');
+          loadCalendar();
+        });
+        $('.prevMonth').click(function() {
+          calMonth.add(1,'month');
+          loadCalendar();
+        });
       });
     </script>
   </head>
