@@ -61,7 +61,7 @@
         var temp = calMonth.clone();
         var startWeek = temp.startOf('month').week();
         var endWeek   = temp.endOf('month').week();
-        if (endWeek == -1) {
+        if (endWeek == 1) {
           endWeek = temp.endOf('month').subtract(1,'weeks').week() + 1;
         }
         alert('start: '+startWeek+' end: '+endWeek);
