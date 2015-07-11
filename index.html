@@ -60,7 +60,10 @@
         $('.calendar tbody').html('');
         var temp = calMonth.clone();
         var startWeek = temp.startOf('month').week();
-        var endWeek   = temp.endOf('month').startOf('week').week();
+        var endWeek   = temp.endOf('month').week();
+        if (endWeek == -1) {
+          endWeek = temp.endOf('month').subtract(1,'weeks').week() + 1;
+        }
         alert('start: '+startWeek+' end: '+endWeek);
         for (var w = startWeek; w <= endWeek; w++) {
           var weekHTML = [];
