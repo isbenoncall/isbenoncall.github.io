@@ -30,16 +30,18 @@
       }
     </style>
     <script type="text/javascript">
-      $(document).ready(function() {
-        var sched = 'powcpowcpowcpowcpowcpowcpowcpow';
+      var now;
+      var calMonth;
+      var sched = 'powcpowcpowcpowcpowcpowcpowcpow';
+      
+      var stateStr = {'c':'<i class="fa fa-user-md"></i> Yes.', 'p':'<i class="fa fa-bed"></i> Post.', 'o':'<i class="fa fa-home"></i> No.', 'w':'<i class="fa fa-briefcase"></i> Wedge.'};
+      var classStr = {'c':'call', 'p':'post', 'o':'off', 'w':'wedge' };
+      
+      function loadCalendar() {
+        $('.calendar .month').html(calMonth.format('MMMM YYYY'));
         
-        var stateStr = {'c':'<i class="fa fa-user-md"></i> Yes.', 'p':'<i class="fa fa-bed"></i> Post.', 'o':'<i class="fa fa-home"></i> No.', 'w':'<i class="fa fa-briefcase"></i> Wedge.'};
-        var classStr = {'c':'call', 'p':'post', 'o':'off', 'w':'wedge' };
-        
-        var now = moment();
-        var temp = now.clone();
-        $('.state').html(stateStr[sched.charAt(now.date()-1)]);
-        $('.calendar .month').html(now.format('MMMM YYYY'));
+        $('.calendar tbody').html('');
+        var temp = calMonth.clone();
         var startWeek = temp.startOf('month').week();
         var endWeek   = temp.endOf('month').week();
         for (var w = startWeek; w <= endWeek; w++) {
@@ -47,9 +49,9 @@
           for (var d = 0; d < 7; d++) {
             temp.week(w).day(d);
             var dayClass = [];
-            if (now.isSame(temp,'month')) {
+            if (temp.isSame(now,'month')) {
               dayClass.push(classStr[sched.charAt(temp.date()-1)]);
-              if (now.isSame(temp,'day')) {
+              if (temp.isSame(now,'day')) {
                 dayClass.push('today');
               }
             } else {
@@ -59,6 +61,13 @@
           }
           $('.calendar tbody').append('<tr>'+weekHTML.join('')+'</tr>');
         }
+      }
+    
+      $(document).ready(function() {
+        now = moment();
+        calMonth = now.clone();
+        $('.state').html(stateStr[sched.charAt(now.date()-1)]);
+        loadCalendar();
       });
     </script>
   </head>
