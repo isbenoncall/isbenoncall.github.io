@@ -67,7 +67,7 @@
     
       $(document).ready(function() {
         now = moment();
-        calMonth = now.clone();
+        calMonth = now.clone(); calMonth.add(1,'month');
         $('.state').html(stateStr[sched[now.format('MMMM YYYY')].charAt(now.date()-1)]);
         loadCalendar();
       });
