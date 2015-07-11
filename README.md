@@ -1,2 +1,2 @@
-# isbenoncall.github.io
+# www.isbenoncall.com
 Website that shows if Ben is on call.
