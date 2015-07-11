@@ -30,7 +30,13 @@
         for (var w = startWeek; w <= endWeek; w++) {
           var weekHTML = '';
           for (var d = 0; d < 7; d++) {
-            weekHTML += '<td>'+temp.week(w).day(d).format('D')+'</td>';
+            temp.week(w).day(d);
+            if (now.isSame(temp,'month')) {
+              weekHTML += '<td>';
+            } else {
+              weekHTML += '<td class="inactive">';
+            }
+            weekHTML += temp.format('D')+'</td>';
           }
           $('.calendar tbody').append('<tr>'+weekHTML+'</tr>');
         }
