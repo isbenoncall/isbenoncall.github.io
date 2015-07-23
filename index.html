@@ -85,7 +85,7 @@
       }
     
       $(document).ready(function() {
-        now = moment();
+        now = moment(); now.add('day',1);
         calMonth = now.clone(); calMonth.startOf('month');
         $('.state').html(stateStr[getCode(now)]);
         $('.state').prop('title',hoverStr[getCode(now)]);
