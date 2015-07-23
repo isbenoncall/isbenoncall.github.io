@@ -84,6 +84,7 @@
         now = moment();
         calMonth = now.clone(); calMonth.startOf('month');
         $('.state').html(stateStr[getCode(now)]);
+        $('.state').prop('title','Test');
         loadCalendar();
         
         $('.month').click(function() {
@@ -103,7 +104,7 @@
   </head>
   
   <body>
-    <h1 class="state" title="Test"> Maybe? </h1>
+    <h1 class="state" title="Not sure..."> Maybe? </h1>
     <table class="calendar">
       <thead>
         <tr>
