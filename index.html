@@ -46,7 +46,11 @@
       
       var stateStr = {'c':'<i class="fa fa-hospital-o"></i> Yes.', 'p':'<i class="fa fa-bed"></i> Post.', 'o':'<i class="fa fa-home"></i> No.', 'w':'<i class="fa fa-medkit"></i> Wedge.', 'e':'<i class="fa fa-question-circle"></i> Maybe?'};
       var classStr = {'c':'call', 'p':'post', 'o':'off', 'w':'wedge', 'e':'empty' };
-      var hoverStr = {'c':'call test', 'p':'post test', 'o':'off test', 'e':'empty test'}
+      var hoverStr = {
+        'c':'Hey, I just met you, and this crazy, but here\'s my number and on call me maybe.',
+        'p':'Awake between the hours of 3pm and 6pm.', 'o':'Woohoo \\o/',
+        'w':'If you don\'t know what wedge is, you don\'t deserve to know what wedge is.',
+        'e':'Uh oh the page broke!'}
       
       function getCode(day) {
         if ( (day.format('MMMM YYYY') in sched) && day.date() <= sched[day.format('MMMM YYYY')].length ) {
