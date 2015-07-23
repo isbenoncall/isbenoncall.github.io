@@ -84,7 +84,7 @@
         now = moment();
         calMonth = now.clone(); calMonth.startOf('month');
         $('.state').html(stateStr[getCode(now)]);
-        $('.state').prop('title','Is this working');
+        $('.state').prop('title',hoverStr[getCode(now)]);
         loadCalendar();
         
         $('.month').click(function() {
