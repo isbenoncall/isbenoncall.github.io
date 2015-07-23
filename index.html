@@ -46,6 +46,7 @@
       
       var stateStr = {'c':'<i class="fa fa-hospital-o"></i> Yes.', 'p':'<i class="fa fa-bed"></i> Post.', 'o':'<i class="fa fa-home"></i> No.', 'w':'<i class="fa fa-medkit"></i> Wedge.', 'e':'<i class="fa fa-question-circle"></i> Maybe?'};
       var classStr = {'c':'call', 'p':'post', 'o':'off', 'w':'wedge', 'e':'empty' };
+      var hoverStr = {'c':'call test', 'p':'post test', 'o':'off test', 'e':'empty test'}
       
       function getCode(day) {
         if ( (day.format('MMMM YYYY') in sched) && day.date() <= sched[day.format('MMMM YYYY')].length ) {
@@ -102,7 +103,7 @@
   </head>
   
   <body>
-    <h1 class="state"> Maybe? </h1>
+    <h1 class="state" title="Test"> Maybe? </h1>
     <table class="calendar">
       <thead>
         <tr>
